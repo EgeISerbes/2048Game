@@ -1,7 +1,8 @@
 ﻿using System;
 
 namespace _2048Game
-{class Table2048 
+{
+    class Table2048 
 {   
     Cell2048[,] table ;
     public Table2048()
@@ -9,10 +10,17 @@ namespace _2048Game
 
     }
     
-    public  void createTable(int row, int coll)
-    {
-         table = new Cell2048[row,coll];
-        
+    
+    public  void createTable(int row , int coll)
+    {   
+        table = new Cell2048[row,coll];
+        for (int i=0; i<row ; i++)
+        {
+            for (int j = 0;j<coll; j++)
+            {
+                table[i,j] = new Cell2048();
+            }
+        }
         for (int i=0; i <row; i++)
         {
             for (int j =0 ; j <coll ; j++)
