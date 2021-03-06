@@ -1,0 +1,16 @@
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\bin\Debug\net5.0\2048Game.exe
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\bin\Debug\net5.0\2048Game.deps.json
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\bin\Debug\net5.0\2048Game.runtimeconfig.json
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\bin\Debug\net5.0\2048Game.runtimeconfig.dev.json
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\bin\Debug\net5.0\2048Game.dll
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\bin\Debug\net5.0\ref\2048Game.dll
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\bin\Debug\net5.0\2048Game.pdb
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\obj\Debug\net5.0\2048Game.csprojAssemblyReference.cache
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\obj\Debug\net5.0\2048Game.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\obj\Debug\net5.0\2048Game.AssemblyInfoInputs.cache
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\obj\Debug\net5.0\2048Game.AssemblyInfo.cs
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\obj\Debug\net5.0\2048Game.csproj.CoreCompileInputs.cache
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\obj\Debug\net5.0\2048Game.dll
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\obj\Debug\net5.0\ref\2048Game.dll
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\obj\Debug\net5.0\2048Game.pdb
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\obj\Debug\net5.0\2048Game.genruntimeconfig.cache
