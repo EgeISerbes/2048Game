@@ -80,11 +80,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\egese\\OneDrive\\Belgeler\\GitHub\\2048Game\\2048Game.csproj",
+      "projectUniqueName": "C:\\Users\\egese\\OneDrive\\Belgeler\\GitHub\\2048Game\\2048Game.csproj",
       "projectName": "2048Game",
-      "projectPath": "c:\\Users\\egese\\OneDrive\\Belgeler\\GitHub\\2048Game\\2048Game.csproj",
+      "projectPath": "C:\\Users\\egese\\OneDrive\\Belgeler\\GitHub\\2048Game\\2048Game.csproj",
       "packagesPath": "C:\\Users\\egese\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\egese\\OneDrive\\Belgeler\\GitHub\\2048Game\\obj\\",
+      "outputPath": "C:\\Users\\egese\\OneDrive\\Belgeler\\GitHub\\2048Game\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\egese\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -1,10 +1,10 @@
 ﻿using System;
-System.Windows.
+using System.Text;
 namespace _2048Game
 {
     class Table2048 
 {   
-    Cell2048[,] table ;
+  public  Cell2048[,] table ;
     public Table2048()
     {
 
@@ -87,9 +87,9 @@ namespace _2048Game
                         table[i,j].down = table[i+1,j];
                     }
                 }
-                        Console.Write(table[i,j].value);
+                        
             }
-            Console.WriteLine("\n");
+            
 
         }
 
@@ -240,52 +240,54 @@ namespace _2048Game
 
     }
 
-    public void drawTable(Cell2048[,] cellT)
+    public void drawTable()
     {
-        int row = cellT.GetUpperBound(0) + 1 ;
-        int coll = cellT.GetUpperBound(1) + 1 ;
+        int row = table.GetUpperBound(0) + 1 ;
+        int coll = table.GetUpperBound(1) + 1 ;
         for (int i = 0; i < row ; i++)
         {
             for (int j = 0; j< coll ; j++)
             {
-                Console.Write(cellT[i,j]);
+                Console.Write(table[i,j].value);
             }
             Console.WriteLine("\n");
         }
     }
 
-    public void putRandomValues(Cell2048[,] cellT)
+    public void putRandomValues()
     {   
         var rand = new Random();
-        int row = cellT.GetUpperBound(0) + 1 ;
-        int coll = cellT.GetUpperBound(1) + 1 ;
-        int howManyValue = rand.Next(1,3) ;
+        int row = table.GetUpperBound(0) + 1 ;
+        int coll = table.GetUpperBound(1) + 1 ;
+        int howManyValue = rand.Next(2,10) ;
         int randRow,randColl;
         while ( howManyValue > 0 )
         {
             randRow = rand.Next(row);
             randColl = rand.Next(coll);
-            if (cellT[randRow,randColl].value != 0) continue ;
+            if (table[randRow,randColl].value != 0) continue ;
             else
             {
                 double chance = rand.NextDouble();
                 if (chance <0.75)
                 {
-                    cellT[randRow,randColl] = 2 ;
+                    table[randRow,randColl].value = 2 ;
                 }
                 else if (chance>=0.75 && chance <0.98)
                 {
-                    cellT[randRow,randColl] = 4 ;
+                    table[randRow,randColl].value = 4 ;
                 }
                 else 
                 {
-                    cellT[randRow,randColl] = 8 ;
+                    table[randRow,randColl].value = 8 ;
                 }
 
                 howManyValue -= 1;
             }
         }
     }
+
+    
 }
 
 class Cell2048
@@ -302,25 +304,137 @@ class Cell2048
 
 }
 
+class Game2048 : Table2048
+{   
+    ConsoleKeyInfo input ;
+    int row,coll ;
+    bool isOver ;
+    public  Game2048(int row , int coll)
+    {
+        this.row = row ;
+        this.coll = coll ;
+        isOver = false ;
+    }
 
+    public void StartGame()
+    {   
+        
+        Console.WriteLine("Press Space to start , Esc to stop the game, P to pause the game");
+         input = Console.ReadKey(true) ;
+                if (input.Key.ToString() == "Spacebar")
+                {  
+                    do
+                    { 
+                    createTable(this.row,this.coll);
+                    putRandomValues();
+                    drawTable();
+                    
+                    if (input.Key.ToString() == "W")
+                    {
+                        UpPressed();
+                    }
+                    else if (input.Key.ToString() == "S")
+                    {
+                        DownPressed();
+                    }
+                    else if (input.Key.ToString() == "A")
+                    {
+                        LeftPressed();
+                    }
+                    else if (input.Key.ToString() == "D")
+                    {
+                        RightPressed();
+                    }
+                    Console.Clear();
+                    putRandomValues();
+                    drawTable();
+                    isOver = isGameOver();
+                    } while (input.Key != ConsoleKey.Escape && !isOver) ;
+                }
+    }
+
+    public void UpPressed()
+    {
+        
+        int coll = this.coll ;
+        for(int j = 0 ; j<coll; j++)
+        {
+            slideUp(table[1,j]);
+        }
+    }
+
+    public void DownPressed()
+    {
+        int row = this.row - 2 ;
+        int coll = this.coll ; 
+        for(int j = 0; j< coll ; j++)
+        {
+            slideDown(table[row,j]);
+        }
+    }
+
+    public void LeftPressed()
+    {
+        int row = this.row ;
+        for (int i = 0; i<row;i ++)
+        {
+            slideLeft(table[i,1]);
+        }
+    }
+
+    public void RightPressed()
+    {
+        int row = this.row ;
+        int coll = this.coll-2 ;
+        for (int i =0 ; i<row ;i++)
+        {
+            slideRight(table[i,coll]);
+        }
+    }
+
+    public bool isGameOver()
+    {
+        int row = table.GetUpperBound(0) + 1 ;
+        int coll = table.GetUpperBound(1) + 1 ;
+        for (int i =0 ; i <row ; i++)
+        {
+            for (int j= 0 ; j<row ; j++)
+            {
+                if(table[i,j].value == 0) return false ;
+            }
+        }
+        return true ;
+    }
+
+
+}
     class Program
     {   
          
        public static void Main(string[] args)
         {
-              int i,j ;
-              
-              i = 4;
-              j = 4;
-            Table2048 table = new Table2048();
-            table.createTable(i,j) ;
-            Console.WriteLine("bruh...");
-            while(true)
-            {
+            
+            Game2048 game = new Game2048(4,4);
+            game.StartGame() ;
+            
+            /*do {
+                
+                input = Console.ReadKey(true) ;
+                if (input.Key.ToString() == "Spacebar")
+                {
+                    if (input.Key.ToString() == "W")
+                    {
+                        
+                    }
+                }
 
-            }
+
+            }while (input.Key != ConsoleKey.Escape && !isOver) ;*/
+            
         }
 
         
     }
+
+   
 }

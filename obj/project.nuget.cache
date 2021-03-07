@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vCJ6Ypv5ea194H/btuLTVAScGT5CdReBHjvTiF/rHYldpQbKwtu+WovXbD/JodsLUtavzyLxlpbaHN1n0uGyHA==",
+  "dgSpecHash": "9fHXh4uYtaVJaZj38WzXHTz040yHo4Jh9vpVIF0mSJcZe+SDZc3uig1aUiJI1B0BCw0El4EO/XMZqYohLp+Q0g==",
   "success": true,
-  "projectFilePath": "c:\\Users\\egese\\OneDrive\\Belgeler\\GitHub\\2048Game\\2048Game.csproj",
+  "projectFilePath": "C:\\Users\\egese\\OneDrive\\Belgeler\\GitHub\\2048Game\\2048Game.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\egese\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\egese\\.nuget\\packages\\system.reactive.windows.forms\\5.0.0\\system.reactive.windows.forms.5.0.0.nupkg.sha512"

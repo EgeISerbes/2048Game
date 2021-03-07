@@ -14,3 +14,6 @@ C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\obj\Debug\net5.0\2048Game.dll
 C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\obj\Debug\net5.0\ref\2048Game.dll
 C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\obj\Debug\net5.0\2048Game.pdb
 C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\obj\Debug\net5.0\2048Game.genruntimeconfig.cache
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\bin\Debug\net5.0\Newtonsoft.Json.dll
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\bin\Debug\net5.0\System.Reactive.Windows.Forms.dll
+C:\Users\egese\OneDrive\Belgeler\GitHub\2048Game\obj\Debug\net5.0\2048Game.csproj.CopyComplete
