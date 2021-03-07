@@ -319,12 +319,14 @@ class Game2048 : Table2048
     public void StartGame()
     {   
         
+
         Console.WriteLine("Press Space to start , Esc to stop the game, P to pause the game");
          input = Console.ReadKey(true) ;
                 if (input.Key.ToString() == "Spacebar")
                 {  
                     do
                     { 
+                    input = Console.ReadKey(true);
                     createTable(this.row,this.coll);
                     putRandomValues();
                     drawTable();
