@@ -185,7 +185,7 @@ namespace _2048Game
     public void slideLeft(Cell2048 cell)
     {
         if (cell == null) return ;
-        else if (cell.right == null) 
+        else if (cell.left == null) 
         {
             slideLeft(cell.right);
             return ;
