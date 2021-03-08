@@ -99,7 +99,11 @@ namespace _2048Game
     {   
         
         if (cell == null) return ;
-        else if (cell.right == null) return;
+        else if (cell.right == null) 
+        {
+            slideRight(cell.left);
+            return ;
+        } 
         if(cell.value == 0)
         {
             slideRight(cell.left);
@@ -108,19 +112,63 @@ namespace _2048Game
         else
         {
            if(cell.right.value == 0)
-           {
-               cell.right.value += cell.value ;
+           {    
+               Cell2048 temp = new Cell2048() ;
+               temp = cell.right ;
+               while (temp.right != null && temp.right.value == 0)
+               {
+                   temp = temp.right ; 
+
+               }
+               temp.value += cell.value ;
                cell.value = 0;
-               slideRight(cell.right);
-               slideRight(cell.left);
-               return ;
+               if(temp.right != null)
+               {
+                    if (temp.right.value == temp.value)
+                    {
+                        if (!temp.right.hasChanged)
+                        {
+                            temp.right.value += temp.value ;
+                            temp.value = 0;
+                            temp.right.hasChanged = true ;
+                            slideRight(cell.left);
+                        }
+                        else
+                        {   
+                            temp.right.hasChanged = false ;
+                            slideRight(cell.left);
+                        }
+                   
+                    }
+                    else
+                    {
+                        slideRight(cell.left);
+                    }
+               }
+               else
+               {
+                   slideRight(cell.left);
+               }
+
            }
            else if (cell.value == cell.right.value)
-           {
+           {    
+               if (!cell.right.hasChanged)
+               {
+
+               
                cell.right.value += cell.value ;
                cell.value = 0;
+               cell.right.hasChanged = true ;
                slideRight(cell.left);
                return;
+
+               }
+               else 
+               {
+                   cell.right.hasChanged = false ;
+                   slideRight(cell.left);
+               }
            }
            else if (cell.value != cell.right.value)
            {
@@ -137,7 +185,11 @@ namespace _2048Game
     public void slideLeft(Cell2048 cell)
     {
         if (cell == null) return ;
-        else if (cell.left == null) return;
+        else if (cell.right == null) 
+        {
+            slideLeft(cell.right);
+            return ;
+        } 
         if(cell.value == 0)
         {
             slideLeft(cell.right);
@@ -146,19 +198,59 @@ namespace _2048Game
         else
         {
            if(cell.left.value == 0)
-           {
-               cell.left.value += cell.value ;
+           {    
+               Cell2048 temp = new Cell2048() ;
+               temp = cell.left ;
+               while (temp.left != null && temp.left.value == 0)
+               {
+                   temp = temp.left ; 
+
+               }
+               temp.value += cell.value ;
                cell.value = 0;
-               slideLeft(cell.left);
-               slideLeft(cell.right);
-               return ;
+               if(temp.left != null)
+               {
+                    if (temp.left.value == temp.value)
+                    {
+                        if (!temp.left.hasChanged)
+                        {
+                            temp.left.value += temp.value ;
+                            temp.value = 0;
+                            temp.left.hasChanged = true ;
+                            slideLeft(cell.right);
+                        }
+                        else
+                        {   
+                            temp.left.hasChanged = false ;
+                            slideLeft(cell.right);
+                        }
+                   
+                    }
+                    else
+                    {
+                        slideLeft(cell.right);
+                    }
+               }
+               else
+               {
+                   slideLeft(cell.right);
+               }
+
            }
            else if (cell.value == cell.left.value)
-           {
+           {    
+               if (!cell.left.hasChanged){
                cell.left.value += cell.value ;
                cell.value = 0;
+               cell.left.hasChanged = true ;
                slideLeft(cell.right);
                return;
+               
+               }
+               else{
+                   cell.left.hasChanged = false ;
+                   slideLeft(cell.right);
+               }
            }
            else if (cell.value != cell.left.value)
            {
@@ -172,7 +264,11 @@ namespace _2048Game
     public void slideUp(Cell2048 cell)
     {
         if (cell == null) return ;
-        else if (cell.up == null) return;
+        else if (cell.up == null) 
+        {   
+            slideUp(cell.down);
+            return;
+        }
         if(cell.value == 0)
         {
             slideUp(cell.down);
@@ -181,19 +277,60 @@ namespace _2048Game
         else
         {
            if(cell.up.value == 0)
-           {
-               cell.up.value += cell.value ;
+           {    
+               Cell2048 temp = new Cell2048() ;
+               temp = cell.up ;
+               while (temp.up != null && temp.up.value == 0)
+               {
+                   temp = temp.up ; 
+
+               }
+               temp.value += cell.value ;
                cell.value = 0;
-               slideUp(cell.up);
-               slideUp(cell.down);
-               return ;
+               if(temp.up != null)
+               {
+                    if (temp.up.value == temp.value)
+                    {
+                        if (!temp.up.hasChanged)
+                        {
+                            temp.up.value += temp.value ;
+                            temp.value = 0;
+                            temp.up.hasChanged = true ;
+                            slideUp(cell.down);
+                        }
+                        else
+                        {   
+                            temp.up.hasChanged = false ;
+                            slideUp(cell.down);
+                        }
+                   
+                    }
+                    else
+                    {
+                        slideUp(cell.down);
+                    }
+               }
+               else
+               {
+                   slideUp(cell.down);
+               }
+
            }
            else if (cell.value == cell.up.value)
-           {
-               cell.up.value += cell.value ;
+           {    
+               if (!cell.up.hasChanged)
+               {cell.up.value += cell.value ;
                cell.value = 0;
+               cell.up.hasChanged = true;
                slideUp(cell.down);
                return;
+               
+               }
+               else 
+               {
+                   cell.up.hasChanged = false ;
+                   slideUp(cell.down);
+               }
            }
            else if (cell.value != cell.up.value)
            {
@@ -207,7 +344,10 @@ namespace _2048Game
     public void slideDown(Cell2048 cell)
     {
         if (cell == null) return ;
-        else if (cell.down == null) return ;
+        else if (cell.down == null) {
+            slideDown(cell.up);
+            return ;
+            }
         if (cell.value == 0)
         {
             slideDown(cell.up);
@@ -215,20 +355,61 @@ namespace _2048Game
         }
         else
         {
-            if (cell.down.value == 0)
-            {
-                cell.down.value += cell.value ;
-                cell.value = 0 ;
-                slideDown(cell.down);
-                slideDown(cell.up);
-                return;
-            }
+            if(cell.down.value == 0)
+           {    
+               Cell2048 temp = new Cell2048() ;
+               temp = cell.down ;
+               while (temp.down != null && temp.down.value == 0)
+               {
+                   temp = temp.down ; 
+
+               }
+               temp.value += cell.value ;
+               cell.value = 0;
+               if(temp.down != null)
+               {
+                    if (temp.down.value == temp.value)
+                    {
+                        if (!temp.down.hasChanged)
+                        {
+                            temp.down.value += temp.value ;
+                            temp.down.hasChanged = true ;
+                            temp.value = 0;
+                            slideDown(cell.up);
+                        }
+                        else
+                        {   
+                            temp.down.hasChanged = false ;
+                            slideDown(cell.up);
+                        }
+                   
+                    }
+                    else
+                    {
+                        slideDown(cell.up);
+                    }
+               }
+               else
+               {
+                   slideDown(cell.up);
+               }
+
+           }
             else if (cell.value == cell.down.value)
-            {
+            {   
+                if ( !cell.down.hasChanged) {
                 cell.down.value += cell.value ;
                 cell.value = 0 ;
+                cell.down.hasChanged = true ;
                 slideDown(cell.up);
                 return;
+
+                }
+                else 
+                {
+                    cell.down.hasChanged = false ;
+                    slideDown(cell.up) ;
+                }
                 
             }
             else if (cell.value != cell.down.value)
@@ -259,7 +440,7 @@ namespace _2048Game
         var rand = new Random();
         int row = table.GetUpperBound(0) + 1 ;
         int coll = table.GetUpperBound(1) + 1 ;
-        int howManyValue = rand.Next(2,10) ;
+        int howManyValue = rand.Next(2,4) ;
         int randRow,randColl;
         while ( howManyValue > 0 )
         {
@@ -287,7 +468,19 @@ namespace _2048Game
         }
     }
 
-    
+    public void ClearHC()
+    {
+        int row = table.GetUpperBound(0) + 1 ;
+        int coll = table.GetUpperBound(1) + 1 ;
+        for (int i = 0; i < row ; i++)
+        {
+            for (int j = 0; j< coll ; j++)
+            {
+                table[i,j].hasChanged = false ;
+            }
+            
+        }
+    } 
 }
 
 class Cell2048
@@ -297,9 +490,12 @@ class Cell2048
    public Cell2048 up ;
    public Cell2048 down ;
    public int value ;
+
+   public bool hasChanged ;
     public Cell2048()
     {
         this.value =  0;
+        hasChanged = false ;
     }
 
 }
@@ -324,7 +520,7 @@ class Game2048 : Table2048
          input = Console.ReadKey(true) ;
                 if (input.Key.ToString() == "Spacebar")
                 {  
-                    do
+                    /*do
                     { 
                     input = Console.ReadKey(true);
                     createTable(this.row,this.coll);
@@ -351,8 +547,47 @@ class Game2048 : Table2048
                     putRandomValues();
                     drawTable();
                     isOver = isGameOver();
-                    } while (input.Key != ConsoleKey.Escape && !isOver) ;
+                    } while (input.Key != ConsoleKey.Escape && !isOver) ; */
+
                 }
+
+                createTable(this.row,this.coll);
+                putRandomValues();
+                drawTable();
+                Console.WriteLine("\n");  
+                slideLeft(table[0,0]);
+                slideLeft(table[1,0]);
+                slideLeft(table[2,0]);
+                slideLeft(table[3,0]);
+                putRandomValues();
+                drawTable();
+                ClearHC();
+                Console.WriteLine("\n");
+                slideRight(table[0,3]);
+                slideRight(table[1,3]);
+                slideRight(table[2,3]);
+                slideRight(table[3,3]);
+                putRandomValues();
+                drawTable();
+                ClearHC();
+                Console.WriteLine("\n");  
+                slideUp(table[0,0]);
+                slideUp(table[0,1]);
+                slideUp(table[0,2]);
+                slideUp(table[0,3]);
+                putRandomValues();
+                drawTable();
+                ClearHC();
+                Console.WriteLine("\n");  
+                slideDown(table[3,0]);
+                slideDown(table[3,1]);
+                slideDown(table[3,2]);
+                slideDown(table[3,3]);
+                putRandomValues();
+                drawTable();
+                ClearHC();
+
+
     }
 
     public void UpPressed()
